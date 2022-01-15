@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes, Navigate, Link } from 'react-router-dom';
+import Lista from './components/Lista';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <p><Link to="/">Főoldal</Link></p>
+      <p><Link to="about">About oldalra</Link></p>
+      <p><Link to="asd">Semmi - Átirányítás</Link></p>
+
+
+      <Routes>
+        <Route path="/" element={<Lista tartalom="info">Children data</Lista>}/>
+        <Route path="about" element="Rövid leírás" />
+        <Route path="user" element="Felhasználói adatok" />
+        <Route path="other" element="Egyéb dolgok" />
+        <Route path="*" element={<Navigate replace to="/" />} />
+      </Routes>
+    </>
   );
 }
 
